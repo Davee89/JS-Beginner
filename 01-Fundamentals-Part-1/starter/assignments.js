@@ -46,3 +46,10 @@ if (Population > PopulationAverage) {
   const populationDiffrence = PopulationAverage - Population;
   console.log(`Poland's population is ${populationDiffrence} million below average`);
 }
+// ! Coding Challenge 2 ! //
+if (MarkBMI > JohnBMI) {
+  console.log(`Mark's BMI (${Math.round(MarkBMI)}) is higher than John's (${Math.round(JohnBMI)})!`);
+} else {
+  console.log(`John's BMI (${Math.round(JohnBMI)}) is higher than Mark's (${Math.round(MarkBMI)})!`);
+}
+// * Next
