@@ -10,8 +10,8 @@ console.log(typeof isIsland, typeof Population, typeof Country, typeof Language)
 Language = "polish";
 console.log(Population);
 // * Next
-Population /= 2;
-Population++;
+// Population /= 2;
+// Population++;
 console.log(Population);
 let PopulationFinland = 6;
 let PopulationAverage = 33;
@@ -38,3 +38,11 @@ console.log(MarkBMI, JohnBMI);
 markHigherBMI = MarkBMI > JohnBMI;
 console.log(markHigherBMI);
 // * Next
+description = `Portugal is in Europe, and its 11 million people speak portuguese`;
+// * Next -- Windows + . ❤ ❤ ❤ 😁 😁 😁 👏 👏 👏 🐱‍👤 🐱‍👤 🐱‍👤
+if (Population > PopulationAverage) {
+  console.log(`Poland's population is above average`);
+} else {
+  const populationDiffrence = PopulationAverage - Population;
+  console.log(`Poland's population is ${populationDiffrence} million below average`);
+}
