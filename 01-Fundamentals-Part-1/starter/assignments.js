@@ -53,11 +53,31 @@ if (MarkBMI > JohnBMI) {
   console.log(`John's BMI (${Math.round(JohnBMI)}) is higher than Mark's (${Math.round(MarkBMI)})!`);
 }
 // * Next
-const numNeighbours = Number(prompt("How many neighbour countries does your country have?"));
-if (numNeighbours === 1) {
-  console.log("Only 1 border!");
-} else if (numNeighbours > 1) {
-  console.log("More than 1 border");
+// const numNeighbours = Number(prompt("How many neighbour countries does your country have?"));
+// if (numNeighbours === 1) {
+//   console.log("Only 1 border!");
+// } else if (numNeighbours > 1) {
+//   console.log("More than 1 border");
+// } else {
+//   console.log("No borders");
+// }
+// * NEXT
+if (Language === "english" && Population < 50 && isIsland === false) {
+  console.log("You should live in Poland! :)");
 } else {
-  console.log("No borders");
+  console.log("Poland does not meet your criteria :(");
 }
+// ! 3RD CHALLENGE ! //
+const averageDolphins = (97 + 112 + 101) / 3;
+const averageKoalas = (109 + 95 + 106) / 3;
+console.log(averageDolphins, averageKoalas);
+if (averageDolphins > averageKoalas && averageDolphins >= 100) {
+  console.log("Team Dolphins wins!");
+} else if (averageDolphins === averageKoalas && averageDolphins >= 100) {
+  console.log("There is a draw!");
+} else if (averageDolphins < averageKoalas && averageKoalas >= 100) {
+  console.log("Team Koalas wins!");
+} else {
+  console.log("No team wins, because they didn't achieve enough points!");
+}
+// * NEXT
