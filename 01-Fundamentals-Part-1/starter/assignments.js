@@ -81,3 +81,37 @@ if (averageDolphins > averageKoalas && averageDolphins >= 100) {
   console.log("No team wins, because they didn't achieve enough points!");
 }
 // * NEXT
+const day = "monday";
+if (day === "monday") {
+  console.log("do monday tasks");
+} else if (day === "tuesday") {
+  console.log("do tuesday tasks");
+} else if (day === "wednesday" || day === "thursday") {
+  console.log("do wednesday/thursday tasks");
+} else if (day === "friday") {
+  console.log("do friday tasks");
+} else if (day === "sunday" || day === "saturday") {
+  console.log("do saturday/sunday tasks");
+} else {
+  console.log("Not a valid day!");
+}
+switch (Language) {
+  case "chinese":
+  case "mandarin":
+    console.log("MOST number of native spaekers");
+    break;
+  case "spanish":
+    console.log("2nd place in number of native spaekers");
+    break;
+  case "english":
+    console.log("3rd place in number of native spaekers");
+    break;
+  case "hindi":
+    console.log("4th place in number of native spaekers");
+    break;
+  case "arabic":
+    console.log("5th place in number of native spaekers");
+    break;
+  default:
+    console.log("Great language too :D");
+}
