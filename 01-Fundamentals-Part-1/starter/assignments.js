@@ -115,3 +115,9 @@ switch (Language) {
   default:
     console.log("Great language too :D");
 }
+// * Next
+console.log(`${Country}'s population is ${Population > 33 ? "above" : "below"} average`);
+// ! 4th CHALENGE ! //
+const billValue = 430;
+const tip = billValue >= 50 && billValue <= 300 ? billValue * 0.15 : billValue * 0.2;
+console.log(`The bill was ${billValue}, the tip was ${tip} and the total value is ${billValue + tip}`);
