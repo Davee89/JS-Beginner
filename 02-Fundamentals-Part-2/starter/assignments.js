@@ -29,3 +29,26 @@ const percentageOfWorld3 = (population) => (population / 7900) * 100;
 console.log(percentageOfWorld3(38), percentageOfWorld3(80), percentageOfWorld3(120));
 
 // * NEXT
+function describePopulation(country, population) {
+  const percentage = percentageOfWorld1(population);
+  return `${country} has ${population} millions people, which is about ${percentage}% of the world`;
+}
+console.log(describePopulation("Poland", 38));
+// ! CHALLENGE 1 ! //
+const calcAverage = (scoreOne, scoreTwo, scoreThree) => {
+  return (scoreOne + scoreTwo + scoreThree) / 3;
+};
+const averageDolphins = calcAverage(85, 54, 41);
+const averageCoalas = calcAverage(23, 34, 27);
+const checkWinner = function (avgDolphins, avgCoalas) {
+  if (avgCoalas >= 2 * avgDolphins) {
+    console.log(`Coalas win (${avgCoalas} vs ${avgDolphins})`);
+  } else if (2 * avgCoalas <= avgDolphins) {
+    console.log(`Dolphins win (${avgDolphins} vs ${avgCoalas})`);
+    return `Dolphins win (${avgDolphins} vs ${avgCoalas})`;
+  } else {
+    console.log(`Noone wins this time. The result is (Dolphins ${avgDolphins} vs Coalas ${avgCoalas})`);
+  }
+};
+const winnerOne = checkWinner(averageDolphins, averageCoalas);
+console.log(winnerOne + 2);
