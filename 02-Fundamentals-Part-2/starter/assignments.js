@@ -52,3 +52,9 @@ const checkWinner = function (avgDolphins, avgCoalas) {
 };
 const winnerOne = checkWinner(averageDolphins, averageCoalas);
 console.log(winnerOne + 2);
+// * NEXT
+const populations = new Array(38, 80, 120, 1180);
+console.log(populations.length === 4);
+const percentages = [percentageOfWorld1(populations[0]), percentageOfWorld1(populations[1]), percentageOfWorld1(populations[2]), percentageOfWorld1(populations[populations.length - 1])];
+console.log(percentages);
+// * NEXT
