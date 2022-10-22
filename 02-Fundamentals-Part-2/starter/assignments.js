@@ -58,3 +58,28 @@ console.log(populations.length === 4);
 const percentages = [percentageOfWorld1(populations[0]), percentageOfWorld1(populations[1]), percentageOfWorld1(populations[2]), percentageOfWorld1(populations[populations.length - 1])];
 console.log(percentages);
 // * NEXT
+const neighbours = ["Ukraine", "Germany", "Czech", "Slovakia"];
+neighbours.push("Utopia");
+neighbours.pop();
+neighbours[1] = "Lituania";
+if (!neighbours.includes("Germany")) {
+  console.log("Probably not a central Europe country");
+} else {
+  console.log("It must be in Europe!");
+}
+console.log(neighbours.indexOf("Germany"));
+// ! CHALLENGE 2! //
+const calcTip = function (bill) {
+  if (bill >= 50 && bill <= 300) {
+    return bill * 0.15;
+  } else {
+    return bill * 0.2;
+  }
+};
+console.log(calcTip(100));
+const bills = [125, 555, 44];
+const tips = [calcTip(bills[0]), calcTip(bills[1]), calcTip(bills[bills.length - 1])];
+const total = new Array(bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[2]);
+console.log(tips);
+console.log(total);
+// * NEXT
