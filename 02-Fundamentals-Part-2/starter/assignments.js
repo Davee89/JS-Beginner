@@ -83,3 +83,23 @@ const total = new Array(bills[0] + tips[0], bills[1] + tips[1], bills[2] + tips[
 console.log(tips);
 console.log(total);
 // * NEXT
+const myCountry = {
+  country: "Poland",
+  capital: "Warsaw",
+  language: "polish",
+  population: 38,
+  neighbours: neighbours,
+};
+console.log(myCountry.neighbours);
+const jonas = {
+  firstName: "Jonas",
+  lastName: "Schmedtmann",
+  age: 2037 - 1991,
+  job: "teacher",
+  friends: ["Michael", "Peter", "Steven"],
+};
+console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
+console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}`);
+myCountry.population = myCountry.population + 2;
+myCountry["population"] = myCountry["population"] - 2;
+console.log(myCountry.population);
