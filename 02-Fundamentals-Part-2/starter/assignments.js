@@ -122,3 +122,28 @@ myCountry.checkIsland = function () {
 };
 myCountry.checkIsland();
 console.log(myCountry);
+// ! CHALLENGE 3 ! //
+const Mark = {
+  name: "Mark",
+  mass: 78,
+  height: 1.69,
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  },
+};
+const John = {
+  name: "John",
+  mass: 92,
+  height: 1.95,
+  calcBMI: function () {
+    this.BMI = this.mass / this.height ** 2;
+    return this.BMI;
+  },
+};
+if (Mark.calcBMI() > John.calcBMI()) {
+  console.log(`${Mark.name}'s BMI (${Mark.calcBMI()}) is higher than ${John.name}'s (${John.calcBMI()}!)`);
+} else {
+  console.log(`${John.name}'s BMI (${John.calcBMI()}) is higher than ${Mark.name}'s (${Mark.calcBMI()}!)`);
+}
+// * NEXT
