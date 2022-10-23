@@ -94,12 +94,31 @@ console.log(myCountry.neighbours);
 const jonas = {
   firstName: "Jonas",
   lastName: "Schmedtmann",
-  age: 2037 - 1991,
+  birthYear: 1991,
   job: "teacher",
   friends: ["Michael", "Peter", "Steven"],
+  hasDrivingLicense: true,
+  calcAge: function () {
+    this.age = 2037 - this.birthYear;
+    return this.age;
+  },
 };
 console.log(`${jonas.firstName} has ${jonas.friends.length} friends, and his best friend is called ${jonas.friends[0]}`);
 console.log(`${myCountry.country} has ${myCountry.population} million ${myCountry.language}-speaking people, ${myCountry.neighbours.length} neighbouring countries and a capital called ${myCountry.capital}`);
 myCountry.population = myCountry.population + 2;
 myCountry["population"] = myCountry["population"] - 2;
 console.log(myCountry.population);
+// * NEXT
+console.log(jonas.age);
+console.log(`${jonas.firstName} is a ${jonas.calcAge()}-year old ${jonas["job"]}, and he has ${jonas.hasDrivingLicense ? "a" : "no"} driver's license`);
+
+myCountry.describe = function () {
+  console.log(`${this.country} has ${this.population} million ${this.language}-speaking people, ${this.neighbours.length} neighbouring countries and a capital called ${this.capital}.`);
+};
+myCountry.describe();
+myCountry.checkIsland = function () {
+  this.isIsland = this.neighbours.length > 0 ? false : true;
+  return this.isIsland;
+};
+myCountry.checkIsland();
+console.log(myCountry);
