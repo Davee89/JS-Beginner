@@ -151,3 +151,9 @@ for (let vote = 1; vote <= 50; vote++) {
   console.log(`Voter number ${vote} is currently voting`);
 }
 // * NEXT
+const percentages2 = [];
+for (let i = 0; i < populations.length; i++) {
+  percentages2.push(percentageOfWorld1(populations[i]));
+}
+console.log(percentages2, percentages);
+// * NEXT
