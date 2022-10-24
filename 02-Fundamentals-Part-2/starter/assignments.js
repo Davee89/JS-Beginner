@@ -165,3 +165,10 @@ for (let a = 0; a < listOfNeighbours.length; a++) {
   }
 }
 // * NEXT
+const percentages3 = [];
+let i = 0;
+while (populations.length > i) {
+  percentages3.push(percentageOfWorld1(populations[i]));
+  i++;
+}
+console.log(percentages3, percentages);
