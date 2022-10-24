@@ -172,3 +172,24 @@ while (populations.length > i) {
   i++;
 }
 console.log(percentages3, percentages);
+// ! CHALLENGE 4 FINAL ! //
+const xbills = [22, 295, 176, 440, 37, 105, 10, 1100, 86, 52];
+const xtips = [];
+const xtotal = [];
+for (let i = 0; i < xbills.length; i++) {
+  xtips.push(calcTip(xbills[i]));
+  xtotal.push(xbills[i] + xtips[i]);
+}
+console.log(xtips, xtotal);
+const arr = [1, 2, 3, 4, 5];
+
+const calcAverageX = function (arr) {
+  let sum = 0;
+  for (i = 0; i < arr.length; i++) {
+    sum = sum + arr[i];
+  }
+  const averageArr = sum / arr.length;
+  return averageArr;
+};
+
+console.log(calcAverageX(xtotal));
