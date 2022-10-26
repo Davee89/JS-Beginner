@@ -17,6 +17,9 @@ body {
   background-color: #222;
   /* background-color: #60b347; */
 }
+.green {
+  background-color: #60b347;
+}
 
 /* LAYOUT */
 header {
