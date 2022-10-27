@@ -14,14 +14,15 @@ const zeroingCurrent = function () {
 
 btnRoll.addEventListener('click', function () {
   rollNumber = Math.trunc(Math.random() * 6) + 1;
-  if (rollNumber !== 1 && total[`${activePlayer}`] <= 100) {
-    dice.setAttribute('src', `dice-${rollNumber}.png`);
+  dice.setAttribute('src', `dice-${rollNumber}.png`);
+  if (rollNumber !== 1) {
     current += rollNumber;
     document.querySelector(`#current--${activePlayer}`).textContent = current;
   } else {
-    dice.setAttribute('src', `dice-${rollNumber}.png`);
     zeroingCurrent();
     activePlayer = activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
+    document.querySelector(`.player--0`).classList.toggle('player--active');
+    document.querySelector(`.player--1`).classList.toggle('player--active');
   }
 });
 
@@ -29,6 +30,16 @@ btnHold.addEventListener('click', function () {
   total[`${activePlayer}`] += current;
   document.querySelector(`#score--${activePlayer}`).textContent =
     total[`${activePlayer}`];
+  document.querySelector(`.player--0`).classList.toggle('player--active');
+  document.querySelector(`.player--1`).classList.toggle('player--active');
+  if (total[`${activePlayer}`] >= 100) {
+    document
+      .querySelector(`.player--${activePlayer}`)
+      .classList.add('player--winner');
+    // document
+    //   .querySelector(`.name--${activePlayer}`)
+    //   .classList.add('player--winner name');
+  }
   zeroingCurrent();
   activePlayer = activePlayer === 0 ? (activePlayer = 1) : (activePlayer = 0);
 });
