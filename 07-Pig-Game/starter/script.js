@@ -1,5 +1,4 @@
 'use strict';
-let rollNumber = Math.trunc(Math.random() * 6) + 1;
 let current = 0;
 let total = [0, 0];
 let activePlayer = 0;
@@ -8,6 +7,7 @@ const dice = document.querySelector('.dice');
 const btnRoll = document.querySelector('.btn--roll');
 const btnHold = document.querySelector('.btn--hold');
 const btnNew = document.querySelector('.btn--new');
+dice.style.display = 'none';
 
 // * Zeroing the current score!
 const zeroingCurrent = function () {
@@ -25,7 +25,8 @@ const switchPlayer = function () {
 btnRoll.addEventListener('click', function () {
   if (playing) {
     //   Rolling and showing dice
-    rollNumber = Math.trunc(Math.random() * 6) + 1;
+    let rollNumber = Math.trunc(Math.random() * 6) + 1;
+    dice.style.display = 'block';
     dice.setAttribute('src', `dice-${rollNumber}.png`);
     //   Adding score to current count
     if (rollNumber !== 1) {
@@ -48,7 +49,7 @@ btnHold.addEventListener('click', function () {
       total[`${activePlayer}`];
     zeroingCurrent();
     //   Winning condition
-    if (total[`${activePlayer}`] >= 100) {
+    if (total[`${activePlayer}`] >= 10) {
       playing = false;
       document
         .querySelector(`.player--${activePlayer}`)
@@ -64,4 +65,16 @@ btnHold.addEventListener('click', function () {
   }
 });
 // ! BUTTON NEW GAME ! //
-btnNew.addEventListener('click', function () {});
+btnNew.addEventListener('click', function () {
+  document
+    .querySelector(`.player--${activePlayer}`)
+    .classList.remove('player--winner');
+  playing = true;
+  total = [0, 0];
+  activePlayer = 0;
+  zeroingCurrent();
+  document.querySelector(`#score--0`).textContent = 0;
+  document.querySelector(`#score--1`).textContent = 0;
+  document.querySelector(`.player--0`).classList.add('player--active');
+  document.querySelector(`.player--1`).classList.remove('player--active');
+});
