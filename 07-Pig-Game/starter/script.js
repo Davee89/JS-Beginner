@@ -49,7 +49,7 @@ btnHold.addEventListener('click', function () {
       total[`${activePlayer}`];
     zeroingCurrent();
     //   Winning condition
-    if (total[`${activePlayer}`] >= 10) {
+    if (total[`${activePlayer}`] >= 100) {
       playing = false;
       document
         .querySelector(`.player--${activePlayer}`)
