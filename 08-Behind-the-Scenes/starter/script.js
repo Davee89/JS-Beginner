@@ -5,3 +5,4 @@ function printAge(birthYear) {
   return age;
 }
 console.log(printAge(1989));
+let;
