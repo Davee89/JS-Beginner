@@ -97,3 +97,7 @@ printGoals(...game.scored);
 // ? Task 7 //
 team1 < team2 && console.log('Team 1 is more likely to win');
 team1 > team2 && console.log('Team 2 is more likely to win');
+// * ***************************** * //
+for (const [i, j] of players1.entries()) {
+  console.log(i, j);
+}
