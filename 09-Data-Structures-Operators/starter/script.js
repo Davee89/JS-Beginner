@@ -101,3 +101,26 @@ team1 > team2 && console.log('Team 2 is more likely to win');
 for (const [i, j] of players1.entries()) {
   console.log(i, j);
 }
+// ! CHALLENGE 2 ! //
+// ? TASK 1 //
+for (const [goal, scorer] of game.scored.entries()) {
+  console.log(`Goal ${goal + 1}: ${scorer}`);
+}
+// ? TASK 2 //
+const oddsNew = Object.values(game.odds);
+console.log(oddsNew);
+let aver = 0;
+for (const odd of oddsNew) {
+  aver += odd;
+  console.log(aver / oddsNew.length);
+}
+// ? Task 3 //
+console.log(`Odd of victory ${game.team1}: ${game.odds.team1} `);
+console.log(`Odd of draw: ${game.odds.x} `);
+console.log(`Odd of victory ${game.team2}: ${game.odds.team2} `);
+// ? Task 4 //
+const scorers = {};
+for (const player of game.scored) {
+  scorers[player] ? scorers[player]++ : (scorers[player] = 1);
+}
+console.log(scorers);
