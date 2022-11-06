@@ -126,3 +126,46 @@ for (const player of game.scored) {
 console.log(scorers);
 const newSet = new Set(['Pizza', 'Risotto', 'Panini', 'Pizza']);
 console.log(newSet);
+const question = new Map([
+  ['question', 'What is the best programming language in the world?'],
+  [1, 'C'],
+  [2, 'Java'],
+  [3, 'JavaScript'],
+  ['correct', 3],
+  [true, 'Correct 🎉'],
+  [false, 'Try again!'],
+]);
+console.log(question);
+console.log(question.get('question'));
+for (const [key, value] of question) {
+  if (typeof key === 'number') console.log(`Answer ${key}: ${value}`);
+}
+// const answer = Number(prompt('what is the answer?'));
+// console.log(question.get(answer === 3));
+// ! CHALLENGE 3 ! //
+const gameEvents = new Map([
+  [17, '⚽ GOAL'],
+  [36, '🔁 Substitution'],
+  [47, '⚽ GOAL'],
+  [61, '🔁 Substitution'],
+  [64, '🔶 Yellow card'],
+  [69, '🔴 Red card'],
+  [70, '🔁 Substitution'],
+  [72, '🔁 Substitution'],
+  [76, '⚽ GOAL'],
+  [80, '⚽ GOAL'],
+  [92, '🔶 Yellow card'],
+]);
+
+gameEvents.delete(64);
+const events = [...gameEvents];
+console.log(`An event happened, on
+  average, every ${90 / events.length} minutes`);
+
+for (const [time, event] of gameEvents) {
+  if (time <= 45) {
+    console.log(`[FIRST HALF] ${time}: ${event}`);
+  } else {
+    console.log(`[SECOND HALF] ${time}: ${event}`);
+  }
+}
