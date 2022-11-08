@@ -173,14 +173,44 @@
 document.body.append(document.createElement('textarea'));
 document.body.append(document.createElement('button'));
 const button = document.querySelector('button');
-const textArea = document.querySelector('textarea').value;
 button.addEventListener('click', camelCase);
 
 function camelCase() {
   let text = document.querySelector('textarea').value.toLowerCase();
   let arr = text.split('\n');
-  console.log(arr);
-  // for (const word of arr) {
-  //   word.split('_')
-  // }
+  let newArr = [];
+  let camel = [];
+  for (const word of arr) {
+    newArr.push(word.split('_'));
+  }
+  for (let array of newArr) {
+    for (let i = 1; i < array.length; i++) {
+      array[i] = array[i][0].toUpperCase() + array[1].slice(1);
+    }
+    camel.push(array.join(''));
+  }
+  for (let i = 0; i < camel.length; i++) {
+    camel[i] = camel[i].padEnd(25, ' ') + '✅'.repeat(i + 1);
+  }
+  let camelCaseResult = camel.join('\n');
+  console.log(camelCaseResult);
+}
+const flights =
+  '_Delayed_Departure;fao93766109;txl2133758440;11:25+_Arrival;bru0943384722;fao93766109;11:45+_Delayed_Arrival;hel7439299980;fao93766109;12:05+_Departure;fao93766109;lis2323639855;12:30';
+
+// 🔴 Delayed Departure from FAO to TXL (11h25)
+//              Arrival from BRU to FAO (11h45)
+//   🔴 Delayed Arrival from HEL to FAO (12h05)
+//            Departure from FAO to LIS (12h30)
+
+for (const flight of flights.split('+')) {
+  let [type, from, to, time] = flight.split(';');
+  type = type.includes('Delayed') ? `🔴${type}` : type;
+  const output = `${type.replaceAll('_', ' ')} ${
+    'from ' + from.toUpperCase().slice(0, 3)
+  } ${'to ' + to.toUpperCase().slice(0, 3)} (${time.replace(
+    ':',
+    'h'
+  )})`.padStart(45);
+  console.log(output);
 }
