@@ -15,3 +15,10 @@ createBooking('Lh123', 100);
 
 const greet = greeting => name => console.log(`${greeting} ${name}`);
 greet('Hello')('David');
+
+const addTax = function (value) {
+  return function Vat(rate = 0.23) {
+    value + value * rate;
+  };
+};
+console.log(addTax(100));
