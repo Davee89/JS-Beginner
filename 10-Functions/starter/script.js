@@ -1,5 +1,4 @@
 'use strict';
-
 // const bookings = [];
 // function createBooking(flightNum = none, numPassengers = 1, price = 200) {
 //   const booking = {
