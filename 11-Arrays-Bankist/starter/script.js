@@ -102,6 +102,12 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
+const calcDisplayBalance = function (movements) {
+  const balance = movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${balance} EUR`;
+};
+
+calcDisplayBalance(account1.movements);
 // const eurToUsd = 1.1;
 // const movementsUSD = movements.map(mov => mov * eurToUsd);
 // console.log(movementsUSD);
@@ -117,9 +123,12 @@ const createUserName = function (accs) {
 };
 
 createUserName(accounts); // stw
-console.log(account1, account2, account3, account4);
+// console.log(account1, account2, account3, account4);
 
-const deposits = movements.filter(mov => mov > 0);
+// const deposits = movements.filter(mov => mov > 0);
 
-const withdrawals = movements.filter(mov => mov < 0);
-console.log(withdrawals);
+// const withdrawals = movements.filter(mov => mov < 0);
+// console.log(withdrawals);
+
+// const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
+// console.log(balance);
