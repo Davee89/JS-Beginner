@@ -1,5 +1,18 @@
 'use strict';
 
+const checkDogs = function (arrayJulia, arrayKate) {
+  const newJulia = arrayJulia.slice(1, 3).concat(arrayKate);
+  console.log(newJulia);
+  newJulia.forEach(function (dog, i) {
+    dog >= 3
+      ? console.log(`Dog number ${i + 1} is an adult, and is ${dog} years old`)
+      : console.log(`Dog number ${i + 1} is still a puppy 🐶
+    `);
+  });
+};
+checkDogs([3, 5, 2, 12, 7], [4, 1, 15, 8, 3]);
+checkDogs([9, 16, 6, 8, 3], [10, 5, 6, 1, 4]);
+
 /////////////////////////////////////////////////
 /////////////////////////////////////////////////
 // BANKIST APP
@@ -74,3 +87,17 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
+const displayMovements = function (movements) {
+  containerMovements.innerHTML = '';
+  movements.forEach(function (mov, i) {
+    const type = mov > 0 ? 'deposit' : 'withdrawal';
+    const html = `<div class="movements__row">
+                  <div class="movements__type movements__type--${type}">${
+      i + 1
+    } ${type} </div>
+                  <div class="movements__value">${mov}€</div>
+                  </div>`;
+    containerMovements.insertAdjacentHTML('afterbegin', html);
+  });
+};
+displayMovements(account1.movements);
