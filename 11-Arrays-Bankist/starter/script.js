@@ -118,3 +118,8 @@ const createUserName = function (accs) {
 
 createUserName(accounts); // stw
 console.log(account1, account2, account3, account4);
+
+const deposits = movements.filter(mov => mov > 0);
+
+const withdrawals = movements.filter(mov => mov < 0);
+console.log(withdrawals);
