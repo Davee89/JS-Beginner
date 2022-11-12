@@ -143,6 +143,11 @@ const createUserName = function (accs) {
 };
 
 createUserName(accounts); // stw
+
+btnLogin.addEventListener('click', function (e) {
+  e.preventDefault();
+});
+
 // console.log(account1, account2, account3, account4);
 
 // const deposits = movements.filter(mov => mov > 0);
@@ -164,12 +169,12 @@ createUserName(accounts); // stw
 // console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 // console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
 
-const account = accounts.find(acc => acc.owner === 'Jessica Davis');
-console.log(account);
-let accountTwo = '';
-for (const acc of accounts) {
-  if (acc.owner === 'Jessica Davis') {
-    accountTwo = acc;
-  }
-}
-console.log(accountTwo);
+// const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+// console.log(account);
+// let accountTwo = '';
+// for (const acc of accounts) {
+//   if (acc.owner === 'Jessica Davis') {
+//     accountTwo = acc;
+//   }
+// }
+// console.log(accountTwo);
