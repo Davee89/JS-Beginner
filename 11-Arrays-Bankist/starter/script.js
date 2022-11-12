@@ -104,10 +104,30 @@ displayMovements(account1.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance} EUR`;
+  labelBalance.textContent = `${balance}€`;
 };
 
 calcDisplayBalance(account1.movements);
+
+const calcDisplaySummary = function (movements) {
+  const incomes = movements
+    .filter(mov => mov > 0)
+    .reduce((acc, mov) => acc + mov);
+  labelSumIn.textContent = `${incomes}€`;
+
+  const outcomes = movements
+    .filter(mov => mov < 0)
+    .reduce((acc, mov) => acc + mov);
+  labelSumOut.textContent = `${Math.abs(outcomes)}€`;
+
+  const int = movements
+    .filter(mov => mov > 0)
+    .map(mov => (mov * 1.2) / 100)
+    .filter(mov => mov >= 1)
+    .reduce((acc, mov) => acc + mov);
+  labelSumInterest.textContent = `${int}€`;
+};
+calcDisplaySummary(account1.movements);
 // const eurToUsd = 1.1;
 // const movementsUSD = movements.map(mov => mov * eurToUsd);
 // console.log(movementsUSD);
@@ -133,13 +153,13 @@ createUserName(accounts); // stw
 // const balance = movements.reduce((acc, cur, i, arr) => acc + cur, 0);
 // console.log(balance);
 
-// ! CHALLENGE 2 ! //
-const calcAverageHumanAge = function (ages) {
-  const humanAverage = ages
-    .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
-    .filter(age => age >= 18)
-    .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
-  return humanAverage;
-};
-console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
-console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+// // ! CHALLENGE 2 ! //
+// const calcAverageHumanAge = function (ages) {
+//   const humanAverage = ages
+//     .map(age => (age <= 2 ? age * 2 : 16 + age * 4))
+//     .filter(age => age >= 18)
+//     .reduce((acc, age, i, arr) => acc + age / arr.length, 0);
+//   return humanAverage;
+// };
+// console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
+// console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
