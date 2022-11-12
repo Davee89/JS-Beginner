@@ -102,6 +102,19 @@ const displayMovements = function (movements) {
 };
 displayMovements(account1.movements);
 
-const eurToUsd = 1.1;
-const movementsUSD = movements.map(mov => mov * eurToUsd);
-console.log(movementsUSD);
+// const eurToUsd = 1.1;
+// const movementsUSD = movements.map(mov => mov * eurToUsd);
+// console.log(movementsUSD);
+
+const createUserName = function (accs) {
+  accs.forEach(function (acc) {
+    acc.username = acc.owner
+      .toLowerCase()
+      .split(' ')
+      .map(name => name.slice(0, 1))
+      .join('');
+  });
+};
+
+createUserName(accounts); // stw
+console.log(account1, account2, account3, account4);
