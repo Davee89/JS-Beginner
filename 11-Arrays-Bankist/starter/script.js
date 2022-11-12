@@ -163,3 +163,13 @@ createUserName(accounts); // stw
 // };
 // console.log(calcAverageHumanAge([5, 2, 4, 1, 15, 8, 3]));
 // console.log(calcAverageHumanAge([16, 6, 10, 5, 6, 1, 4]));
+
+const account = accounts.find(acc => acc.owner === 'Jessica Davis');
+console.log(account);
+let accountTwo = '';
+for (const acc of accounts) {
+  if (acc.owner === 'Jessica Davis') {
+    accountTwo = acc;
+  }
+}
+console.log(accountTwo);
