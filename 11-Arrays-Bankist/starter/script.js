@@ -87,9 +87,9 @@ const currencies = new Map([
 const movements = [200, 450, -400, 3000, -650, -130, 70, 1300];
 
 /////////////////////////////////////////////////
-const displayMovements = function (movements) {
+const displayMovements = function (acc) {
   containerMovements.innerHTML = '';
-  movements.forEach(function (mov, i) {
+  acc.movements.forEach(function (mov, i) {
     const type = mov > 0 ? 'deposit' : 'withdrawal';
     const html = `<div class="movements__row">
                   <div class="movements__type movements__type--${type}">${
@@ -101,9 +101,9 @@ const displayMovements = function (movements) {
   });
 };
 
-const calcDisplayBalance = function (movements) {
-  const balance = movements.reduce((acc, mov) => acc + mov, 0);
-  labelBalance.textContent = `${balance}€`;
+const calcDisplayBalance = function (acc) {
+  acc.balance = acc.movements.reduce((acc, mov) => acc + mov, 0);
+  labelBalance.textContent = `${acc.balance}€`;
 };
 
 const calcDisplaySummary = function (account) {
@@ -159,11 +159,37 @@ btnLogin.addEventListener('click', function (e) {
     inputLoginPin.blur();
     inputLoginUsername.blur();
     // Display balance
-    calcDisplayBalance(currentUsername.movements);
+    updateUI(currentUsername);
+    calcDisplayBalance(currentUsername);
     // Display movements
-    displayMovements(currentUsername.movements);
+    displayMovements(currentUsername);
     // Display Summary
     calcDisplaySummary(currentUsername);
+  }
+});
+
+const updateUI = function (acc) {
+  calcDisplayBalance(acc);
+  displayMovements(acc);
+  calcDisplaySummary(acc);
+};
+
+btnTransfer.addEventListener('click', function (e) {
+  e.preventDefault();
+  const amount = Number(inputTransferAmount.value);
+  const receiverAcc = accounts.find(
+    acc => acc.username === inputTransferTo.value
+  );
+  inputTransferTo.value = inputTransferAmount.value = '';
+  if (
+    amount > 0 &&
+    receiverAcc &&
+    amount <= currentUsername.balance &&
+    receiverAcc?.username !== currentUsername.username
+  ) {
+    currentUsername.movements.push(-amount);
+    receiverAcc.movements.push(amount);
+    updateUI(currentUsername);
   }
 });
 
