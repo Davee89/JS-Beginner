@@ -100,34 +100,31 @@ const displayMovements = function (movements) {
     containerMovements.insertAdjacentHTML('afterbegin', html);
   });
 };
-displayMovements(account1.movements);
 
 const calcDisplayBalance = function (movements) {
   const balance = movements.reduce((acc, mov) => acc + mov, 0);
   labelBalance.textContent = `${balance}€`;
 };
 
-calcDisplayBalance(account1.movements);
-
-const calcDisplaySummary = function (movements) {
-  const incomes = movements
+const calcDisplaySummary = function (account) {
+  const incomes = account.movements
     .filter(mov => mov > 0)
-    .reduce((acc, mov) => acc + mov);
+    .reduce((acc, mov) => acc + mov, 0);
   labelSumIn.textContent = `${incomes}€`;
 
-  const outcomes = movements
+  const outcomes = account.movements
     .filter(mov => mov < 0)
-    .reduce((acc, mov) => acc + mov);
+    .reduce((acc, mov) => acc + mov, 0);
   labelSumOut.textContent = `${Math.abs(outcomes)}€`;
 
-  const int = movements
+  const int = account.movements
     .filter(mov => mov > 0)
-    .map(mov => (mov * 1.2) / 100)
+    .map(mov => (mov * account.interestRate) / 100)
     .filter(mov => mov >= 1)
-    .reduce((acc, mov) => acc + mov);
+    .reduce((acc, mov) => acc + mov, 0);
   labelSumInterest.textContent = `${int}€`;
 };
-calcDisplaySummary(account1.movements);
+
 // const eurToUsd = 1.1;
 // const movementsUSD = movements.map(mov => mov * eurToUsd);
 // console.log(movementsUSD);
@@ -144,8 +141,30 @@ const createUserName = function (accs) {
 
 createUserName(accounts); // stw
 
+let currentUsername;
 btnLogin.addEventListener('click', function (e) {
   e.preventDefault();
+  currentUsername = accounts.find(
+    acc => acc.username === inputLoginUsername.value
+  );
+  if (currentUsername?.pin === Number(inputLoginPin.value)) {
+    // Displaying UI and welcome message
+    containerApp.style.opacity = 1;
+    labelWelcome.textContent = `Good day ${currentUsername.owner.slice(
+      0,
+      currentUsername.owner.indexOf(' ')
+    )}`;
+    // Clear fields
+    inputLoginPin.value = inputLoginUsername.value = '';
+    inputLoginPin.blur();
+    inputLoginUsername.blur();
+    // Display balance
+    calcDisplayBalance(currentUsername.movements);
+    // Display movements
+    displayMovements(currentUsername.movements);
+    // Display Summary
+    calcDisplaySummary(currentUsername);
+  }
 });
 
 // console.log(account1, account2, account3, account4);
