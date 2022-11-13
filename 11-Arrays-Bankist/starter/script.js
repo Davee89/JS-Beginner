@@ -261,3 +261,17 @@ btnSort.addEventListener('click', function (e) {
 //   }
 // }
 // console.log(accountTwo);
+
+const random = Array.from(
+  { length: 100 },
+  cur => Math.trunc(Math.random(cur) * 6) + 1
+);
+console.log(random);
+
+labelBalance.addEventListener('click', function () {
+  const movementsUI = Array.from(
+    document.querySelectorAll('.movements__value'),
+    el => Number(el.textContent.replace('€', ''))
+  );
+  console.log(movementsUI.sort((a, b) => b - a));
+});
