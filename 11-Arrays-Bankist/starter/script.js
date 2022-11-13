@@ -165,6 +165,8 @@ btnLogin.addEventListener('click', function (e) {
     displayMovements(currentUsername);
     // Display Summary
     calcDisplaySummary(currentUsername);
+  } else {
+    inputLoginPin.value = inputLoginUsername.value = '';
   }
 });
 
@@ -193,6 +195,25 @@ btnTransfer.addEventListener('click', function (e) {
   }
 });
 
+btnClose.addEventListener('click', function (e) {
+  e.preventDefault();
+
+  if (
+    currentUsername.username === inputCloseUsername.value &&
+    Number(inputClosePin.value) === currentUsername.pin
+  ) {
+    accounts.splice(
+      accounts.findIndex(acc => acc.username === currentUsername.username),
+      1
+    );
+
+    currentUsername = '';
+    containerApp.style.opacity = 0;
+  } else {
+    inputClosePin.value = inputCloseUsername.value = '';
+  }
+  console.log(accounts);
+});
 // console.log(account1, account2, account3, account4);
 
 // const deposits = movements.filter(mov => mov > 0);
