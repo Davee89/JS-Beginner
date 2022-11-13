@@ -275,3 +275,60 @@ labelBalance.addEventListener('click', function () {
   );
   console.log(movementsUI.sort((a, b) => b - a));
 });
+
+const dogs = [
+  { weight: 22, curFood: 250, owners: ['Alice', 'Bob'] },
+  { weight: 8, curFood: 200, owners: ['Matilda'] },
+  { weight: 13, curFood: 275, owners: ['Sarah', 'John'] },
+  { weight: 32, curFood: 340, owners: ['Michael'] },
+];
+// ? 1st task
+dogs.forEach(
+  dog => (dog.recommendedFood = Math.trunc(dog.weight ** 0.75 * 28))
+);
+console.log(dogs);
+// ? 2nd task
+const dogSarah = dogs.find(dog => dog.owners.includes('Sarah'));
+console.log(dogSarah);
+if (dogSarah.recommendedFood * 0.9 > dogSarah.curFood)
+  console.log('Too little');
+else if (dogSarah.recommendedFood * 1.1 < dogSarah.curFood)
+  console.log('Too much');
+else {
+  console.log('Eating healthy!');
+}
+// ? 3rd Task
+const ownersEatTooMuch = [];
+const ownersEatTooLittle = [];
+dogs.forEach(function (dog) {
+  if (dog.recommendedFood * 0.9 > dog.curFood)
+    ownersEatTooLittle.push(...dog.owners);
+  else if (dog.recommendedFood * 1.1 < dog.curFood)
+    ownersEatTooMuch.push(...dog.owners);
+});
+console.log(ownersEatTooLittle, ownersEatTooMuch);
+// ? 4th Task
+console.log(`${ownersEatTooMuch.join(' and ')}'s dogs eat too much!`);
+console.log(`${ownersEatTooLittle.join(' and ')}'s dogs eat too little!`);
+// ? 5th Task
+console.log(dogs.some(dog => dog.recommendedFood === dog.curFood));
+// ? 6th task
+console.log(
+  dogs.some(
+    dog =>
+      dog.recommendedFood * 1.1 >= dog.curFood &&
+      dog.recommendedFood * 0.9 <= dog.curFood
+  )
+);
+// ? 7th Task
+const goodDog = dogs.filter(
+  dog =>
+    dog.recommendedFood * 1.1 >= dog.curFood &&
+    dog.recommendedFood * 0.9 <= dog.curFood
+);
+console.log(goodDog);
+// ? 8th Task
+const sortedDogs = dogs
+  .slice()
+  .sort((a, b) => a.recommendedFood - b.recommendedFood);
+console.log(sortedDogs);
