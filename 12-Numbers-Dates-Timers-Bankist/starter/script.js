@@ -81,6 +81,27 @@ const inputClosePin = document.querySelector('.form__input--pin');
 /////////////////////////////////////////////////
 // Functions
 
+const startLogoutTimer = function () {
+  let time = 120;
+  const tick = function () {
+    const min = `${Math.floor(time / 60)}`.padStart(2, 0);
+    const sec = `${time % 60}`.padStart(2, 0);
+
+    labelTimer.textContent = `${min}:${sec}`;
+
+    if (time === 0) {
+      clearInterval(timer);
+      labelWelcome.textContent = `Log in to get started!`;
+      containerApp.style.opacity = 0;
+      currentAccount = '';
+    }
+    time--;
+  };
+  tick();
+  const timer = setInterval(tick, 1000);
+  return timer;
+};
+
 const displayMovements = function (acc, sort = false) {
   containerMovements.innerHTML = '';
 
@@ -162,12 +183,12 @@ const updateUI = function (acc) {
 
 ///////////////////////////////////////
 // Event handlers
-let currentAccount;
+let currentAccount, timer;
 
-//FAKE LOGIN
-currentAccount = account1;
-updateUI(currentAccount);
-containerApp.style.opacity = 100;
+// //FAKE LOGIN
+// currentAccount = account1;
+// updateUI(currentAccount);
+// containerApp.style.opacity = 100;
 
 const now = new Date();
 const day = `${now.getDate()}`.padStart(2, 0);
@@ -187,6 +208,8 @@ btnLogin.addEventListener('click', function (e) {
   console.log(currentAccount);
 
   if (currentAccount?.pin === Number(inputLoginPin.value)) {
+    if (timer) clearInterval(timer);
+    timer = startLogoutTimer();
     // Display UI and message
     labelWelcome.textContent = `Welcome back, ${
       currentAccount.owner.split(' ')[0]
@@ -283,14 +306,3 @@ console.log(
   navigator.language,
   new Intl.NumberFormat(navigator.language).format(num)
 );
-
-setTimeout(() => console.log('Here is your pizza!'), 3000);
-
-setInterval(() => {
-  const now = new Date();
-  const hour = `${now.getHours()}`.padStart(2, 0);
-  const min = `${now.getMinutes()}`.padStart(2, 0);
-  const sec = `${now.getSeconds()}`.padStart(2, 0);
-
-  console.log(`${hour}:${min}:${sec}`);
-}, 1000);
