@@ -277,3 +277,20 @@ btnSort.addEventListener('click', function (e) {
 /////////////////////////////////////////////////
 // LECTURES
 // isFinit
+const num = 876231223.23;
+console.log('US', new Intl.NumberFormat('en-US').format(num));
+console.log(
+  navigator.language,
+  new Intl.NumberFormat(navigator.language).format(num)
+);
+
+setTimeout(() => console.log('Here is your pizza!'), 3000);
+
+setInterval(() => {
+  const now = new Date();
+  const hour = `${now.getHours()}`.padStart(2, 0);
+  const min = `${now.getMinutes()}`.padStart(2, 0);
+  const sec = `${now.getSeconds()}`.padStart(2, 0);
+
+  console.log(`${hour}:${min}:${sec}`);
+}, 1000);
