@@ -41,11 +41,31 @@ btnScrollTo.addEventListener('click', function () {
   // });
   section1.scrollIntoView({ behavior: 'smooth' });
 });
-const randomInt = (min, max) =>
-  Math.floor(Math.random() * (max - min + 1) + min);
-const randomColor = () =>
-  `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
 
-document.querySelector('.nav__link').addEventListener('click', function () {
-  this.style.backgroundColor = randomColor();
+document.querySelector('.nav__links').addEventListener('click', function (e) {
+  e.preventDefault();
+  if (e.target.classList.contains('nav__link')) {
+    const id = e.target.getAttribute('href');
+    const section = document.querySelector(id);
+    section.scrollIntoView({ behavior: 'smooth' });
+  }
 });
+
+// Page navigation
+// document.querySelectorAll('.nav__link').forEach(function (el) {
+//   el.addEventListener('click', function (e) {
+//     e.preventDefault();
+//     const id = this.getAttribute('href');
+//     const section = document.querySelector(`${id}`);
+//     section.scrollIntoView({ behavior: 'smooth' });
+//   });
+// });
+
+// const randomInt = (min, max) =>
+//   Math.floor(Math.random() * (max - min + 1) + min);
+// const randomColor = () =>
+//   `rgb(${randomInt(0, 255)},${randomInt(0, 255)},${randomInt(0, 255)})`;
+
+// document.querySelector('.nav__link').addEventListener('click', function () {
+//   this.style.backgroundColor = randomColor();
+// });
