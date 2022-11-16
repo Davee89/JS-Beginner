@@ -104,6 +104,28 @@ const headerObserver = new IntersectionObserver(stickyNav, {
 });
 
 headerObserver.observe(header);
+
+const sections = document.querySelectorAll('.section');
+
+const displaySection = function (entries, observer) {
+  const [entry] = entries;
+
+  if (!entry.isIntersecting) return;
+
+  entry.target.classList.remove('section--hidden');
+  observer.unobserve(entry.target);
+};
+
+const showSections = new IntersectionObserver(displaySection, {
+  root: null,
+  threshold: 0.15,
+});
+
+sections.forEach(function (section) {
+  showSections.observe(section);
+  section.classList.add('section--hidden');
+});
+
 // Page navigation
 // document.querySelectorAll('.nav__link').forEach(function (el) {
 //   el.addEventListener('click', function (e) {
